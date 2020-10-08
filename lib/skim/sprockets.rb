@@ -3,9 +3,6 @@ require 'sprockets'
 if Sprockets.respond_to?(:register_transformer)
   Sprockets.register_mime_type 'text/skim', extensions: ['.skim', '.jst.skim'], charset: :unicode
   Sprockets.register_transformer 'text/skim', 'application/javascript+function', Skim::Template
-
-  require 'sprockets/jst_processor'
-  Sprockets.register_transformer 'application/javascript+function', 'application/javascript', Sprockets::JstProcessor
 end
 
 if Sprockets.respond_to?(:register_engine)
