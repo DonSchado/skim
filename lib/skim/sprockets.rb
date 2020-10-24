@@ -6,9 +6,7 @@ else
   if Sprockets.respond_to?(:register_transformer)
     Sprockets.register_mime_type 'text/skim', extensions: ['.skim', '.jst.skim'], charset: :unicode
     Sprockets.register_transformer 'text/skim', 'application/javascript+function', Skim::Template
-  end
-
-  if Sprockets.respond_to?(:register_engine)
+  elsif Sprockets.respond_to?(:register_engine)
     args = ['.skim', Skim::Template]
     args << { mime_type: 'application/javascript', silence_deprecation: true }
     Sprockets.register_engine(*args)
